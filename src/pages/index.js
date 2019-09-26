@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
-
+import { Link, graphql } from "gatsby"
 import Layout from '../global/Layout';
 import Image from '../components/Image';
 
@@ -10,7 +10,7 @@ const Page = styled.div`
   padding: 20px;
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  justify-content: flex-start;
   align-items: center;
 `;
 
@@ -20,22 +20,47 @@ const Heading = styled.h1`
   margin-top: 60px;
 `;
 
-const Label = styled.p`
-  font-size: 14px;
-  color: #aaa;
-  margin-top: 12px;
-  letter-spacing: 10px;
-  text-transform: uppercase;
-`;
 
-const IndexPage = () => (
+const IndexPage = ({data}) => (
   <Layout>
     <Page>
-      <Image />
-      <Heading>GatsbyJS + Storybook</Heading>
-      <Label>Starter</Label>
+      
+      <Heading>Dimetrio English</Heading>
+               <h4>{data.allMarkdownRemark.totalCount} Posts</h4>
+    {data.allMarkdownRemark.edges.map(({ node,index }) => (
+      <Link key={index} to={node.fields.slug}>
+        <h3>{node.frontmatter.title}</h3>
+        <h4>{node.frontmatter.date}</h4>
+        <p>{node.excerpt}</p>
+      </Link>
+      )
+    
+ 
+  )
+}
+
+      
     </Page>
   </Layout>
 );
 
 export default IndexPage;
+export const query = graphql`
+  query {
+    allMarkdownRemark (sort: { fields: [frontmatter___date], order: DESC }) {
+      totalCount
+      edges {
+        node {
+          id
+          frontmatter {
+            title
+            date(formatString: "DD MMMM, YYYY")
+          }
+          fields {            
+            slug          
+          }
+          excerpt
+        }
+      }
+    }
+  }`

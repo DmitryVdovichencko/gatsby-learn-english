@@ -27,6 +27,10 @@
     "clean": "gatsby clean"
   },
   "dependencies": {
+    "@iconify/icons-flat-color-icons": "^1.0.1",
+    "@iconify/react": "^1.1.1",
+    "@material-ui/core": "^4.4.3",
+    "@material-ui/icons": "^4.4.3",
     "gatsby": "^2.15.24",
     "gatsby-image": "^2.2.17",
     "gatsby-plugin-manifest": "^2.2.14",
@@ -35,12 +39,17 @@
     "gatsby-plugin-root-import": "^2.0.5",
     "gatsby-plugin-sharp": "^2.2.19",
     "gatsby-plugin-styled-components": "^3.1.4",
-    "gatsby-source-filesystem": "^2.1.21",
+    "gatsby-remark-emojis": "^0.3.2",
+    "gatsby-source-filesystem": "^2.1.28",
+    "gatsby-transformer-remark": "^2.6.26",
     "gatsby-transformer-sharp": "^2.2.13",
+    "lodash": "^4.17.15",
     "prop-types": "^15.7.2",
     "react": "^16.9.0",
     "react-dom": "^16.9.0",
     "react-helmet": "^5.2.1",
+    "react-redux": "^7.1.1",
+    "redux": "^4.0.4",
     "styled-components": "^4.3.2",
     "styled-reset-advanced": "^1.0.1"
   },
@@ -56,6 +65,7 @@
     "eslint-plugin-import": "^2.18.2",
     "eslint-plugin-jsx-a11y": "^6.2.3",
     "eslint-plugin-react": "^7.14.3",
+    "redux-logger": "^3.0.6",
     "yarn-run-all": "^3.1.1"
   }
 }
