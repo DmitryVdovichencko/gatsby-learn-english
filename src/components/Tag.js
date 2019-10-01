@@ -8,9 +8,12 @@ import calendarIcon from '@iconify/icons-flat-color-icons/calendar';
 const Tag = styled.li`
 
 display: inline-flex;
-
+&:hover{
+  background-color:#333;
+  color:white;
+}
 a{
-
+  
   background-image:none;
   text-shadow:none;
   text-decoration:none;
@@ -18,6 +21,7 @@ a{
 `
 const TagText = styled.span`
 	padding:0px 5px;
+  color:lightgrey;
 `
 	
 
