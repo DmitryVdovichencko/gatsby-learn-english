@@ -7,6 +7,6 @@ import PostPreview from './PostPreview';
 storiesOf('PostPreview', module)
   .add('Default', () => (
   	<MuiThemeProvider theme={theme}>
-    	<PostPreview />
+    	<PostPreview tags={['Develop','Songs']}/>
     </MuiThemeProvider>
   ));

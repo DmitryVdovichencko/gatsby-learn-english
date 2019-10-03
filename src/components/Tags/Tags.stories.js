@@ -7,6 +7,6 @@ import Tags from './Tags';
 storiesOf('Tags', module)
   .add('Default', () => (
   	<MuiThemeProvider theme={theme}>
-    	<Tags tags={['Music','Grammar']}/>
+    	<Tags tags={['Develop','Songs']}/>
     </MuiThemeProvider>
   ));

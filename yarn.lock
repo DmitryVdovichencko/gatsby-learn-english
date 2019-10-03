@@ -1239,6 +1239,11 @@
   resolved "https://registry.yarnpkg.com/@iconify/icons-flat-color-icons/-/icons-flat-color-icons-1.0.1.tgz#9bbb4c4f4b6811db162af2a572bf55c963a9731b"
   integrity sha512-6lBtohpA4ggGbJeRJK+Sfg2rHj9FnQK1qz5xq8HhYcgsGUAtVl7wxE713KIYyZXjrdjDOk2wCq04LGM/qXGO4Q==
 
+"@iconify/icons-ion@^1.0.6":
+  version "1.0.6"
+  resolved "https://registry.yarnpkg.com/@iconify/icons-ion/-/icons-ion-1.0.6.tgz#42d1ef5a8f8e25096e3661e60ff1af108c792193"
+  integrity sha512-DbwzXuU619JiXul1WS0ZrrGZREMOFsA3IGkaIr+ELEIv061EVpApBjt6LHuM29l77WsnmzNsnVsBAwadMTUYZw==
+
 "@iconify/react@^1.1.1":
   version "1.1.1"
   resolved "https://registry.yarnpkg.com/@iconify/react/-/react-1.1.1.tgz#38526508f722e0b617723d79209bb1e6d8c59c61"

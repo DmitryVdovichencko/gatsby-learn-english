@@ -14,6 +14,9 @@ export default createMuiTheme({
     useNextVariants: true,
     h5:{
     	fontFamily:'Patua One',
+    },
+    h6:{
+      fontFamily:'Patua One',
     }
   },
 })

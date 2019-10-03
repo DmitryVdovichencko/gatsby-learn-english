@@ -3,6 +3,7 @@ import clsx from 'clsx';
 import { makeStyles, useTheme } from '@material-ui/core/styles';
 import Drawer from '@material-ui/core/Drawer';
 import CssBaseline from '@material-ui/core/CssBaseline';
+import Grid from '@material-ui/core/Grid';
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
 import List from '@material-ui/core/List';
@@ -19,6 +20,12 @@ import InboxIcon from '@material-ui/icons/MoveToInbox';
 import MailIcon from '@material-ui/icons/Mail';
 import Avatar from '@material-ui/core/Avatar';
 import AvatarImg from '../../assets/images/profile.jpeg'
+import { Link } from "gatsby";
+import kebabCase from "lodash/kebabCase";
+import { InlineIcon } from '@iconify/react';
+import Social from '../Social/Social';
+import logoGithub from '@iconify/icons-ion/logo-github';
+import logoTwitter from '@iconify/icons-ion/logo-twitter';
 const drawerWidth = 265;
 
 const useStyles = makeStyles(theme => ({
@@ -58,6 +65,34 @@ const useStyles = makeStyles(theme => ({
   menuButton: {
     marginRight: theme.spacing(2),
   },
+  menuItem:{
+    
+        justifyContent:'space-between',
+        color:'#757575',
+      
+
+  },
+    menuItem__text:{
+    flex:1,
+        textAlign:'center',
+        fontSize:'1.3em',
+      
+
+  },
+  social:{
+    margin:'auto',
+    marginBottom:'0px',
+    width:'100%',
+
+
+  },
+  social__icons:{
+    padding:'20px',
+    textAlign:'center',
+  },
+  menuImage:{
+    flex:2,
+  },
   hide: {
     display: 'none',
   },
@@ -77,6 +112,9 @@ const useStyles = makeStyles(theme => ({
   },
   drawerHeader__text: {
     padding: 5,
+    color:'#757575',
+    fontSize:'1em',
+
   },
   content: {
     flexGrow: 1,
@@ -96,7 +134,7 @@ const useStyles = makeStyles(theme => ({
   },
 }));
 
-export default function PersistentDrawerLeft() {
+export default function Menu(props) {
   const classes = useStyles();
   const theme = useTheme();
   const [open, setOpen] = React.useState(false);
@@ -129,7 +167,7 @@ export default function PersistentDrawerLeft() {
             <MenuIcon />
           </IconButton>
           <Typography variant="h5" noWrap className={classes.toolBar__header}>
-            Dimetrio English
+            {props.title}
           </Typography>
         </Toolbar>
       </AppBar>
@@ -144,31 +182,58 @@ export default function PersistentDrawerLeft() {
       >
         <div className={classes.drawerHeader}>
           <Avatar alt="Dimetrio" src={AvatarImg} className={classes.avatar} />
-          <Typography variant="h8" noWrap className={classes.drawerHeader__text}>
-            My English Learning
+          <Typography variant="h6" component="h6" noWrap className={classes.drawerHeader__text}>
+            {props.menuTitle}
           </Typography>
           <IconButton onClick={handleDrawerClose}>
             {theme.direction === 'ltr' ? <ChevronLeftIcon /> : <ChevronRightIcon />}
           </IconButton>
         </div>
         <Divider />
+
         <List>
-          {['Inbox', 'Starred', 'Send email', 'Drafts'].map((text, index) => (
-            <ListItem button key={text}>
-              <ListItemIcon>{index % 2 === 0 ? <InboxIcon /> : <MailIcon />}</ListItemIcon>
-              <ListItemText primary={text} />
+          {props.links.map((link, index) => (
+            <Link to={`/${kebabCase(link.text)}/`}>
+            <ListItem button key={link.text} className={classes.menuItem}>
+            
+              <InlineIcon icon={link.icon} height='24px'/>
+              <Typography variant="h5" className={classes.menuItem__text} component="h3" >{link.text}</Typography> 
+              
             </ListItem>
+            </Link>
           ))}
+          <Divider />
+          
+          
+
         </List>
+        <div className={classes.social}>
+
         <Divider />
-        <List>
-          {['All mail', 'Trash', 'Spam'].map((text, index) => (
-            <ListItem button key={text}>
-              <ListItemIcon>{index % 2 === 0 ? <InboxIcon /> : <MailIcon />}</ListItemIcon>
-              <ListItemText primary={text} />
-            </ListItem>
-          ))}
-        </List>
+        <div className={classes.social__icons}>
+                <Social 
+
+      contacts={[
+          {
+            link:'https://github.com/DmitryVdovichencko',
+            icon: logoGithub,
+            tooltip:'My GitHub'
+          },
+        
+          {
+            link:'https://twitter.com/Dimetrio89',
+            icon: logoTwitter,
+            tooltip:'@Dimetrio89'
+          },
+          
+
+        ]}
+        color="#757575"
+        
+        />
+        </div>
+        </div>
+        
       </Drawer>
       <main
         className={clsx(classes.content, {

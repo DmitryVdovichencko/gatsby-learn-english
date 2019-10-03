@@ -18,6 +18,7 @@ import PostImg from '../../assets/images/cover.png'
 import CssBaseline from '@material-ui/core/CssBaseline';
 import Button from '@material-ui/core/Button';
 import LocalOfferIcon from '@material-ui/icons/LocalOffer';
+import Tags from '../Tags/Tags'
 const useStyles = makeStyles(theme => ({
   card: {
     maxWidth: 345,
@@ -59,7 +60,7 @@ const useStyles = makeStyles(theme => ({
   },
 }));
 
-export default function RecipeReviewCard() {
+export default function PostPreview(props) {
   const classes = useStyles();
 
 
@@ -70,7 +71,8 @@ export default function RecipeReviewCard() {
         title="Shrimp and Chorizo Paella"
         subheader="September 14, 2016"
       />
-      <CardActions disableSpacing className={classes.tags}><LocalOfferIcon font-size="small" color="default" className={classes.tagIcon}/> Music, Grammar</CardActions>
+      <Tags tags={props.tags} />
+      
       <CardMedia
         className={classes.media}
         image={PostImg}
