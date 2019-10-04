@@ -2,10 +2,19 @@ import React from "react"
 import PropTypes from "prop-types"
 import { Helmet } from "react-helmet"
 import { Link, graphql } from "gatsby"
-
+import Layout from '../global/Layout';
 import Tag from "../components/Tag"
+import Grid from '@material-ui/core/Grid';
+import Typography from '@material-ui/core/Typography';
+import { makeStyles } from '@material-ui/core/styles';
+const useStyles = makeStyles(theme => ({
 
-
+ tags__header:{
+    flex:2,
+    textAlign:'center',
+    padding:'20px 0px'
+  },
+}));
 const TagsPage = ({
   data: {
     allMarkdownRemark: { group },
@@ -13,18 +22,34 @@ const TagsPage = ({
       siteMetadata: { title },
     },
   },
-}) => (
+}) => {
+  const classes = useStyles();
+  return(
 
-    <div>
-      <h1>Tags</h1>
-      <ul>
+    <Layout>
+         <Typography variant="h5" noWrap className={classes.tags__header}>
+            All tags
+          </Typography>
+      
+                     <Grid
+  
+  
+  container 
+    direction="row"
+  justify="center"
+  spacing={3}
+  
+>
 
         {group.map(tag => (
+          <Grid item>
                  <Tag
+
             tagName = {tag.fieldValue}
             tagCount = {tag.totalCount}
           >
           </Tag>
+          </Grid>
           )
 
         
@@ -34,10 +59,10 @@ const TagsPage = ({
         
 
         )}
-      </ul>
-    </div>
+      </Grid>
+    </Layout>
 
-)
+)}
 
 TagsPage.propTypes = {
   data: PropTypes.shape({

@@ -22,6 +22,7 @@ import Tags from '../Tags/Tags'
 const useStyles = makeStyles(theme => ({
   card: {
     maxWidth: 345,
+
   },
   tagIcon:{
     height:16,
@@ -68,20 +69,23 @@ export default function PostPreview(props) {
     <Card className={classes.card}>
     <CssBaseline />
       <CardHeader
-        title="Shrimp and Chorizo Paella"
-        subheader="September 14, 2016"
+        title={props.title}
+        subheader={props.date}
       />
       <Tags tags={props.tags} />
-      
-      <CardMedia
+      {props.img &&      
+             <CardMedia
         className={classes.media}
-        image={PostImg}
-        title="Paella dish"
-      />
+        image={props.img}
+        title={props.imgTooltip}
+      />}
+
+
+      
+ 
       <CardContent>
         <Typography variant="body2" color="textSecondary" component="p">
-          This impressive paella is a perfect party dish and a fun meal to cook together with your
-          guests. Add 1 cup of frozen peas along with the mussels, if you like.
+    {props.content}
         </Typography>
       </CardContent>
       <CardActions className={classes.cardFooter}>

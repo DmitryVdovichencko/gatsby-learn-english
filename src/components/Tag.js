@@ -1,55 +1,56 @@
 import React from 'react';
-import styled from "styled-components";
+import { makeStyles } from '@material-ui/core/styles';
+import LocalOfferIcon from '@material-ui/icons/LocalOffer';
+import CssBaseline from '@material-ui/core/CssBaseline';
 import { Link } from "gatsby";
+import Button from '@material-ui/core/Button';
 import kebabCase from "lodash/kebabCase";
-import { InlineIcon } from '@iconify/react';
-import calendarIcon from '@iconify/icons-flat-color-icons/calendar';
+const useStyles = makeStyles(theme => ({
+    tagIcon:{
+        height:16,
+        color:'lightgrey',
+        
+      },
+    button: {
+    margin: 0,
+    padding:'2px',
+    color:'grey',
+    textTransform:'none',
+    letterSpacing:0.1,
+    fontWeight:'normal',
+    minWidth:0,
+     },
+      tags:{
+        display:'flex',
+        flex:1,
+        flexFlow:'row nowrap',
+        justifyContent:'flex-end',
+        padding:'0px 20px',
+        color:'grey',
+        alignItems:'center',
+       
+      },
+    }));
+    export default function Tag (props) {
+        const classes = useStyles();
+        return(
+            
+            <div className={classes.tags}>
+                <CssBaseline />
+                <Link to={`/tags/`}><LocalOfferIcon font-size="small" color="default" className={classes.tagIcon}/> </Link>      
+          <Link to={`/tags/${kebabCase(props.tagName)}/`}><Button className={classes.button}>{`${props.tagName} (${props.tagCount})`}</Button></Link>
+          
+          
 
-const Tag = styled.li`
+        
 
-display: inline-flex;
-&:hover{
-  background-color:#333;
-  color:white;
-}
-a{
-  
-  background-image:none;
-  text-shadow:none;
-  text-decoration:none;
-}
-`
-const TagText = styled.span`
-	padding:0px 5px;
-  color:lightgrey;
-`
-	
+     
 
+        
 
-	
-
-const TagIcons = [
-  {
-    tagName:"develop",
-    tagIcon: calendarIcon
-  }
-]
-
-
-
-export default (props) => {
-	const TagArr = TagIcons.filter((tagObj)=> tagObj.tagName === props.tagName);
-    const curTagIcon = TagArr.length > 0 ? TagArr[0].tagIcon : undefined;
-    return(
-    	<Tag key={props.key}>
-			<Link to={`/tags/${kebabCase(props.tagName)}/`}>
-              <InlineIcon icon={curTagIcon} />
-              <TagText>{`${props.tagName} (${props.tagCount})`}</TagText>
-            </Link>
-    
-        </Tag>
-
-    	)
-}
+        
+            </div>
+        )
+    }
 
 	

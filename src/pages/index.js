@@ -3,6 +3,22 @@ import styled from 'styled-components';
 import { Link, graphql } from "gatsby"
 import Layout from '../global/Layout';
 import Image from '../components/Image';
+import PostPreview from '../components/PostPreview/PostPreview';
+import Grid from '@material-ui/core/Grid';
+import { makeStyles } from '@material-ui/core/styles';
+
+const useStyles = makeStyles(theme => ({
+  content:{
+    flex:1,
+  },
+
+container:{
+  
+},
+item:{
+  margin:theme.spacing(2),
+},
+}));
 
 const Page = styled.div`
   width: 100%;
@@ -21,28 +37,49 @@ const Heading = styled.h1`
 `;
 
 
-const IndexPage = ({data}) => (
+const IndexPage = ({data}) =>{
+  const classes = useStyles();
+  return(
   <Layout>
-    <Page>
-      
-      <Heading>Dimetrio English</Heading>
+
                <h4>{data.allMarkdownRemark.totalCount} Posts</h4>
+               <main className={classes.content}>
+               <Grid
+  
+  
+  container 
+    direction="row"
+  justify="center"
+  spacing={3}
+  className={classes.container}
+>
     {data.allMarkdownRemark.edges.map(({ node,index }) => (
+
       <Link key={index} to={node.fields.slug}>
-        <h3>{node.frontmatter.title}</h3>
-        <h4>{node.frontmatter.date}</h4>
-        <p>{node.excerpt}</p>
+      <Grid item  xs className={classes.item}>
+       <PostPreview
+       title={node.frontmatter.title}
+       date={node.frontmatter.date}
+       content={node.excerpt}
+       tags={node.frontmatter.tags}
+       />
+       </Grid>
+      
       </Link>
       )
     
  
   )
 }
+</Grid>
+</main>
 
       
-    </Page>
+    
   </Layout>
 );
+
+} 
 
 export default IndexPage;
 export const query = graphql`
@@ -55,6 +92,7 @@ export const query = graphql`
           frontmatter {
             title
             date(formatString: "DD MMMM, YYYY")
+            tags
           }
           fields {            
             slug          

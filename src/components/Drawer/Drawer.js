@@ -19,13 +19,12 @@ import ListItemText from '@material-ui/core/ListItemText';
 import InboxIcon from '@material-ui/icons/MoveToInbox';
 import MailIcon from '@material-ui/icons/Mail';
 import Avatar from '@material-ui/core/Avatar';
-import AvatarImg from '../../assets/images/profile.jpeg'
+
 import { Link } from "gatsby";
 import kebabCase from "lodash/kebabCase";
 import { InlineIcon } from '@iconify/react';
 import Social from '../Social/Social';
-import logoGithub from '@iconify/icons-ion/logo-github';
-import logoTwitter from '@iconify/icons-ion/logo-twitter';
+
 const drawerWidth = 265;
 
 const useStyles = makeStyles(theme => ({
@@ -124,6 +123,8 @@ const useStyles = makeStyles(theme => ({
       duration: theme.transitions.duration.leavingScreen,
     }),
     marginLeft: -drawerWidth,
+    marginTop: 70,
+    padding:'0px 5%',
   },
   contentShift: {
     transition: theme.transitions.create('margin', {
@@ -131,6 +132,7 @@ const useStyles = makeStyles(theme => ({
       duration: theme.transitions.duration.enteringScreen,
     }),
     marginLeft: 0,
+    
   },
 }));
 
@@ -167,8 +169,9 @@ export default function Menu(props) {
             <MenuIcon />
           </IconButton>
           <Typography variant="h5" noWrap className={classes.toolBar__header}>
-            {props.title}
+            <Link to='/'>{props.title}</Link>
           </Typography>
+
         </Toolbar>
       </AppBar>
       <Drawer
@@ -181,10 +184,11 @@ export default function Menu(props) {
         }}
       >
         <div className={classes.drawerHeader}>
-          <Avatar alt="Dimetrio" src={AvatarImg} className={classes.avatar} />
-          <Typography variant="h6" component="h6" noWrap className={classes.drawerHeader__text}>
+          <Avatar alt="Dimetrio" src={props.avatar} className={classes.avatar} />
+          <Link to='/'><Typography variant="h6" component="h6" noWrap className={classes.drawerHeader__text}>
             {props.menuTitle}
           </Typography>
+          </Link>
           <IconButton onClick={handleDrawerClose}>
             {theme.direction === 'ltr' ? <ChevronLeftIcon /> : <ChevronRightIcon />}
           </IconButton>
@@ -193,7 +197,7 @@ export default function Menu(props) {
 
         <List>
           {props.links.map((link, index) => (
-            <Link to={`/${kebabCase(link.text)}/`}>
+           <Link to={link.link ? link.link : `/${kebabCase(link.text)}/`}>
             <ListItem button key={link.text} className={classes.menuItem}>
             
               <InlineIcon icon={link.icon} height='24px'/>
@@ -213,21 +217,8 @@ export default function Menu(props) {
         <div className={classes.social__icons}>
                 <Social 
 
-      contacts={[
-          {
-            link:'https://github.com/DmitryVdovichencko',
-            icon: logoGithub,
-            tooltip:'My GitHub'
-          },
-        
-          {
-            link:'https://twitter.com/Dimetrio89',
-            icon: logoTwitter,
-            tooltip:'@Dimetrio89'
-          },
-          
+      contacts={props.contacts}
 
-        ]}
         color="#757575"
         
         />
@@ -240,30 +231,7 @@ export default function Menu(props) {
           [classes.contentShift]: open,
         })}
       >
-        <div className={classes.drawerHeader} />
-        <Typography paragraph>
-          Lorem ipsum dolr sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt
-          ut labore et dolore magna aliqua. Rhoncus dolor purus non enim praesent elementum
-          facilisis leo vel. Riss at ultrices mi tempus imperdiet. Semper risus in hendrerit
-          gravida rutrum quisque non tellus. Convallis convallis tellus id interdum velit laoreet id
-          donec ultrices. Odio morbi quis commodo odio aenean sed adipiscing. Amet nisl suscipit
-          adipiscing bibendum est ultricies integer quis. Cursus euismod quis viverra nibh cras.
-          Metus vulputate eu scelerisque felis imperdiet proin fermentum leo. Mauris commodo quis
-          imperdiet massa tincidunt. Cras tincidunt lobortis feugiat vivamus at augue. At augue eget
-          arcu dictum varius duis at consectetur lorem. Velit sed ullamcorper morbi tincidunt. Lorem
-          donec massa sapien faucibus et molestie ac.
-        </Typography>
-        <Typography paragraph>
-          Consequat mauris nunc congue nisi vitae suscipit. Fringilla est ullamcorper eget nulla
-          facilisi etiam dignissim diam. Pulvinar elementum integer enim neque volutpat ac
-          tincidunt. Ornare suspendisse sed nisi lacus sed viverra tellus. Purus sit amet volutpat
-          consequat mauris. Elementum eu facilisis sed odio morbi. Euismod lacinia at quis risus sed
-          vulputate odio. Morbi tincidunt ornare massa eget egestas purus viverra accumsan in. In
-          hendrerit gravida rutrum quisque non tellus orci ac. Pellentesque nec nam aliquam sem et
-          tortor. Habitant morbi tristique senectus et. Adipiscing elit duis tristique sollicitudin
-          nibh sit. Ornare aenean euismod elementum nisi quis eleifend. Commodo viverra maecenas
-          accumsan lacus vel facilisis. Nulla posuere sollicitudin aliquam ultrices sagittis orci a.
-        </Typography>
+      {props.children}
       </main>
     </div>
   );

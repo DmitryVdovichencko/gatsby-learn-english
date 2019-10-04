@@ -1,10 +1,32 @@
 import React from "react"
 import PropTypes from "prop-types"
-
+import Layout from '../global/Layout';
+import PostPreview from '../components/PostPreview/PostPreview';
+import Typography from '@material-ui/core/Typography';
 // Components
 import { Link, graphql } from "gatsby"
+import { makeStyles } from '@material-ui/core/styles';
+import Grid from '@material-ui/core/Grid';
+const useStyles = makeStyles(theme => ({
+  content:{
+    flex:1,
+  },
+
+container:{
+  
+},
+item:{
+  margin:theme.spacing(2),
+},
+ tags__header:{
+    flex:2,
+    textAlign:'center',
+    padding:'20px 0px'
+  },
+}));
 
 const Tags = ({ pageContext, data }) => {
+  const classes = useStyles();
   const { tag } = pageContext
   const { edges, totalCount } = data.allMarkdownRemark
   const tagHeader = `${totalCount} post${
@@ -12,27 +34,47 @@ const Tags = ({ pageContext, data }) => {
   } tagged with "${tag}"`
 
   return (
-    <div> 
+    <Layout> 
+          <Typography variant="h5" noWrap className={classes.tags__header}>
+            {tagHeader}
+          </Typography>
     
-      <h1>{tagHeader}</h1>
-      
+                     <Grid
+  
+  
+  container 
+    direction="row"
+  justify="center"
+  spacing={3}
+  className={classes.container}
+>
         {edges.map(({ node,index }) => {
           
           
           return (
-            <Link key={index} to={node.fields.slug}>
-            <h2>{node.frontmatter.title}</h2>
-            <h4>{node.frontmatter.date}</h4>
-            <p>{node.excerpt}</p>
-            </Link>
+
+        <Link key={index} to={node.fields.slug}>
+      <Grid item  xs className={classes.item}>
+       <PostPreview
+       title={node.frontmatter.title}
+       date={node.frontmatter.date}
+       content={node.excerpt}
+       tags={node.frontmatter.tags}
+       />
+       </Grid>
+      
+      </Link>
 
           )
         })}
+        </Grid>
       
-   
-      <Link to="/tags">All tags</Link>
+     <Typography variant="h5" noWrap className={classes.tags__header}>
+            <Link to="/tags">All tags</Link>
+          </Typography>
+      
     
-    </div>
+    </Layout>
   )
 }
 
@@ -77,6 +119,7 @@ export const pageQuery = graphql`
           frontmatter {
             title
             date
+            tags
           }
           excerpt
         }
