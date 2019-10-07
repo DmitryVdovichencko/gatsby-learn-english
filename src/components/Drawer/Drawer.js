@@ -124,7 +124,7 @@ const useStyles = makeStyles(theme => ({
     }),
     marginLeft: -drawerWidth,
     marginTop: 70,
-    padding:'0px 5%',
+    
   },
   contentShift: {
     transition: theme.transitions.create('margin', {

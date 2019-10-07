@@ -12,6 +12,7 @@ import logoGithub from '@iconify/icons-ion/logo-github';
 import logoTwitter from '@iconify/icons-ion/logo-twitter';
 import AvatarImg from '../assets/images/profile.jpeg'
 import Drawer from '../components/Drawer/Drawer'
+import TextContent from '../components/TextContent/TextContent'
 
 import GlobalStyle from './GlobalStyle';
 
@@ -73,7 +74,9 @@ const Layout = ({ children }) => (
 
         ]}
         avatar={AvatarImg}>
+        <TextContent>
           <div>{children}</div>
+          </TextContent>
         </Drawer>
         </MuiThemeProvider>
       </>
