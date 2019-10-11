@@ -6,7 +6,8 @@ import Image from '../components/Image';
 import PostPreview from '../components/PostPreview/PostPreview';
 import Grid from '@material-ui/core/Grid';
 import { makeStyles } from '@material-ui/core/styles';
-
+import Typography from '@material-ui/core/Typography';
+import { Twemoji } from 'react-emoji-render';
 const useStyles = makeStyles(theme => ({
   content:{
     flex:1,
@@ -14,6 +15,10 @@ const useStyles = makeStyles(theme => ({
 
 container:{
   
+},
+title:{
+  textAlign:'center',
+  padding:'20px 0px'
 },
 item:{
   margin:theme.spacing(2),
@@ -41,8 +46,12 @@ const IndexPage = ({data}) =>{
   const classes = useStyles();
   return(
   <Layout>
+           <Typography variant="h5" noWrap className={classes.title}>
+            We have already {data.allMarkdownRemark.totalCount} posts to read <Twemoji text="❤️ 🇬🇧" />
+          </Typography>
+      
 
-               <h4>{data.allMarkdownRemark.totalCount} Posts</h4>
+               <h4></h4>
                <main className={classes.content}>
                <Grid
   

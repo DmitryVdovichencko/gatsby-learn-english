@@ -19,6 +19,7 @@ module.exports = {
       options: {
         path: `${__dirname}/src/`,
         name: 'src',
+                       
       },
     },
     'gatsby-plugin-root-import',
@@ -27,6 +28,7 @@ module.exports = {
     'gatsby-transformer-sharp',
     'gatsby-plugin-sharp',
     'gatsby-plugin-styled-components',
+    
     {
           resolve:`gatsby-transformer-remark`,
               options: {

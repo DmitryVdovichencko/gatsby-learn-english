@@ -17,8 +17,10 @@ post__header:{
 
 },
 dateIcon:{
-         height:16,
+        height:16,
         color:'lightgrey',
+        padding:0,
+        marginLeft:'-5px',
 },
 post:{
 	flexGrow:1,
@@ -41,6 +43,8 @@ post__date:{
         padding:'5px 0px',
         color:'grey',
         alignItems:'center',
+
+
         
 },
 post__content:{

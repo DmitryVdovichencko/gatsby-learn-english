@@ -7,6 +7,6 @@ import Post from './Post';
 storiesOf('Post', module)
   .add('Default', () => (
   	<MuiThemeProvider theme={theme}>
-    	<Post tags={['Develop','Songs']} />
+    	<Post tags={['Develop','Songs']} date='18 August, 2019' title='New Post' />
     </MuiThemeProvider>
   ));
