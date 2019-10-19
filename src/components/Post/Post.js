@@ -10,8 +10,8 @@ const useStyles = makeStyles(theme => ({
 post__header:{
   marginTop: 0,
   marginBottom:10,
-  width:'100%',
-  padding: '15px 0px 15px 10px',
+  width:'80%',
+  
   borderBottom:'1px lightgrey solid'
 
 

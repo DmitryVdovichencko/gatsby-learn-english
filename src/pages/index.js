@@ -46,26 +46,26 @@ const IndexPage = ({data}) =>{
   const classes = useStyles();
   return(
   <Layout>
-           <Typography variant="h5" noWrap className={classes.title}>
+         <Typography variant="h5" noWrap className={classes.title}>
             We have already {data.allMarkdownRemark.totalCount} posts to read <Twemoji text="❤️ 🇬🇧" />
           </Typography>
       
 
-               <h4></h4>
+               
                <main className={classes.content}>
                <Grid
   
   
   container 
-    direction="row"
-  justify="center"
+   
+  
   spacing={3}
   className={classes.container}
 >
     {data.allMarkdownRemark.edges.map(({ node,index }) => (
 
       <Link key={index} to={node.fields.slug}>
-      <Grid item  xs className={classes.item}>
+      <Grid item  xs={12} sm={12} className={classes.item}>
        <PostPreview
        title={node.frontmatter.title}
        date={node.frontmatter.date}
