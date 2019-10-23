@@ -84,6 +84,7 @@ const useStyles = makeStyles(theme => ({
     width:'100%',
 
 
+
   },
   social__icons:{
     padding:'20px',
@@ -113,6 +114,18 @@ const useStyles = makeStyles(theme => ({
     padding: 5,
     color:'#757575',
     fontSize:'1em',
+
+  },
+  picture:{
+    flexGrow:1,
+    
+    background:'#fff url("https://images.unsplash.com/photo-1569865867048-34cfce8d58fe?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=626&q=80") no-repeat center',
+    backgroundSize:'cover',
+    
+
+  },
+  nav:{
+    paddingBottom:0,
 
   },
   content: {
@@ -197,7 +210,7 @@ export default function Menu(props) {
         </div>
         <Divider />
 
-        <List>
+        <List className={classes.nav}>
           {props.links.map((link, index) => (
            <Link to={link.link ? link.link : `/${kebabCase(link.text)}/`}>
             <ListItem button key={link.text} className={classes.menuItem}>
@@ -213,6 +226,7 @@ export default function Menu(props) {
           
 
         </List>
+        <div className={classes.picture}></div>
         <div className={classes.social}>
 
         <Divider />

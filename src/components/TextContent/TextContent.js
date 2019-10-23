@@ -4,7 +4,6 @@ import styled from 'styled-components';
 
 const Article = styled.article`
   width: 100%;
-  border: 1px solid darkgrey;
   margin-top:10px;
   padding: 0px 20%;
   display: flex;
