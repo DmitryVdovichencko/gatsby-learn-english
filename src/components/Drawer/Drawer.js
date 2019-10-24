@@ -118,9 +118,11 @@ const useStyles = makeStyles(theme => ({
   },
   picture:{
     flexGrow:1,
-    
-    background:'#fff url("https://images.unsplash.com/photo-1569865867048-34cfce8d58fe?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=626&q=80") no-repeat center',
+    backgroundImage:'linear-gradient(black, black), url("https://images.unsplash.com/photo-1569865867048-34cfce8d58fe?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=626&q=80")',
+    backgroundRepeat:' no-repeat ',
+    backgroundPosition:'center',
     backgroundSize:'cover',
+    backgroundBlendMode:'saturation',
     
 
   },
