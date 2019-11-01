@@ -23,7 +23,7 @@ const useStyles = makeStyles(theme => ({
                 <CssBaseline />
 
                {props.contacts.map((contact,i) => (
-                 <Tooltip title={contact.tooltip} >
+                 <Tooltip  key={i} title={contact.tooltip} >
           <a href={contact.link} className={classes.contactIcon}>
          
           <InlineIcon icon={contact.icon} height='24px' color={props.color}/>

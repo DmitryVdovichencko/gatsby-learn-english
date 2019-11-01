@@ -5,16 +5,22 @@ import Layout from "../global/Layout"
 
 
 export default ({ data }) => {  
-    const post = data.markdownRemark  
+    const {post} = data
+    const {fields, frontmatter, html} = post
+    const {title, date, tags} = frontmatter
+    const {slug} = fields
+    const comments = data.comments.edges
+    .filter((c)=> slug.indexOf(c.node.url) !== -1)
+    .map((c) => ({ ...c.node}));
+    console.log(comments) 
     return (
     <Layout>
     <Post 
-    title={post.frontmatter.title}
-    date={post.frontmatter.date}
-    tags={post.frontmatter.tags}
+        {...frontmatter}
     >
         <div dangerouslySetInnerHTML={{ __html: post.html }} /> 
     </Post>
+  
     </Layout>
     
   )
@@ -22,14 +28,29 @@ export default ({ data }) => {
 export const query = graphql`  
     query($slug: String!) 
     {    
-        markdownRemark(fields: 
-            { slug: { eq: $slug } }) 
+       post: markdownRemark(fields: { slug: { eq: $slug } }) 
             {      
-                html      
+                html 
+                fields{
+                    slug
+                }     
                 frontmatter {        
                     title
                     date(formatString: "DD MMMM, YYYY")
                     tags      
                 }    
-            }  
-    }`
+            }
+            comments: allComment {
+                edges {
+                  node {
+                    name
+        
+        text
+        url
+        
+       
+                  }
+                }
+              }
+    }
+    `

@@ -14,7 +14,7 @@ const useStyles = makeStyles(theme => ({
   },
 
 container:{
-  
+  justifyContent: 'center',
 },
 title:{
   textAlign:'center',
@@ -22,6 +22,7 @@ title:{
 },
 item:{
   margin:theme.spacing(2),
+
 },
 }));
 
@@ -31,7 +32,7 @@ const Page = styled.div`
   padding: 20px;
   display: flex;
   flex-direction: column;
-  justify-content: flex-start;
+  justify-content: center;
   align-items: center;
 `;
 

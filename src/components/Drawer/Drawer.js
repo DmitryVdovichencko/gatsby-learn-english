@@ -68,7 +68,10 @@ const useStyles = makeStyles(theme => ({
     
         justifyContent:'space-between',
         color:'#757575',
-      
+     '&:hover':{
+       backgroundColor:theme.palette.primary.main,
+       color: 'white',
+     },
 
   },
     menuItem__text:{
@@ -86,6 +89,7 @@ const useStyles = makeStyles(theme => ({
 
 
   },
+
   social__icons:{
     padding:'20px',
     textAlign:'center',
@@ -214,8 +218,8 @@ export default function Menu(props) {
 
         <List className={classes.nav}>
           {props.links.map((link, index) => (
-           <Link to={link.link ? link.link : `/${kebabCase(link.text)}/`}>
-            <ListItem button key={link.text} className={classes.menuItem}>
+           <Link to={link.link ? link.link : `/${kebabCase(link.text)}/`} key={link.text}>
+            <ListItem button className={classes.menuItem}>
             
               <InlineIcon icon={link.icon} height='24px'/>
               <Typography variant="h5" className={classes.menuItem__text} component="h3" >{link.text}</Typography> 

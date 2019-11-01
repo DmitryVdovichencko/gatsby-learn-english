@@ -28,7 +28,12 @@ module.exports = {
     'gatsby-transformer-sharp',
     'gatsby-plugin-sharp',
     'gatsby-plugin-styled-components',
-    
+    {
+      resolve: `gatsby-source-self-hosted-comments`,
+      options: {
+        url: 'https://rest-postgres-api.herokuapp.com/comments/'
+      }
+    },
     {
           resolve:`gatsby-transformer-remark`,
               options: {

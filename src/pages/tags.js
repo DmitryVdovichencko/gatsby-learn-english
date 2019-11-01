@@ -41,8 +41,8 @@ const TagsPage = ({
   
 >
 
-        {group.map(tag => (
-          <Grid item>
+        {group.map((tag,i) => (
+          <Grid key={i} item>
                  <Tag
 
             tagName = {tag.fieldValue}
