@@ -14,6 +14,7 @@ import { makeStyles } from '@material-ui/core/styles';
 const useStyles = makeStyles(theme => ({
     comment:{
         width:'90%',
+        borderRadius:'10px',
     },
     comment__content:{
         paddingLeft:'10px',
@@ -32,6 +33,15 @@ const useStyles = makeStyles(theme => ({
         justifyContent:'center',
         flex:'1',
         color:theme.palette.primary.main,
+    },  
+    comment__icon:{
+      color:'lightgrey',
+      '&:hover':{
+        color:theme.palette.primary.main,
+      },
+      '&:nth-child(2):hover':{
+        color:'red',
+      },
     },
 }))
 export default function Comment(props) {
@@ -56,8 +66,8 @@ export default function Comment(props) {
           <Typography variant="h6" gutterBottom className={classes.comment__author}>{name}</Typography>
           <Typography variant="body2" gutterBottom>{text}</Typography>
           <CardActions>
-        <ReplyIcon />
-        <FavoriteIcon />
+        <ReplyIcon className={classes.comment__icon}/>
+        <FavoriteIcon className={classes.comment__icon}/>
         </CardActions>
           </CardContent>
 </Grid>

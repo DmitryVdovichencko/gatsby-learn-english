@@ -47,7 +47,7 @@ const IndexPage = ({data}) =>{
   const classes = useStyles();
   return(
   <Layout>
-         {<Typography variant="h5" wrap className={classes.title}>
+         {<Typography variant="h5" wrap='true' className={classes.title}>
             We have already {data.allMarkdownRemark.totalCount} posts to read <Twemoji text="❤️ 🇬🇧" />
           </Typography>}
       

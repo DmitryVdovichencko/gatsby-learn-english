@@ -76,11 +76,11 @@ export default function Post(props) {
         </Grid>
         </div>
         <div className={classes.post__content}>    
-         <Typography>
+         
          
           {props.children}
 
-        </Typography>
+        
         </div>
         </Grid>
 </article>
